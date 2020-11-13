@@ -130,3 +130,4 @@ dmypy.json
 
 # Local files
 .DS_Store
+.vscode
