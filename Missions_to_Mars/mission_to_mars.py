@@ -22,7 +22,11 @@ soup = BeautifulSoup(html, "html.parser")
 # extract news titles
 news_titles = soup.find_all("li", class_="slide")
 
-print(news_titles)
+# extract latest news title and assign to variable
+latest = news_titles[0].find("div", class_="content_title")
+news_title = latest.text.strip()
+
+print(news_title)
 
 
 
