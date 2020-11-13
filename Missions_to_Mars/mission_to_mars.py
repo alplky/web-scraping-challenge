@@ -26,7 +26,12 @@ news_titles = soup.find_all("li", class_="slide")
 latest = news_titles[0].find("div", class_="content_title")
 news_title = latest.text.strip()
 
+# extract latest news paragraph text and assign to variable
+p_text = news_titles[0].find("div", class_="article_teaser_body")
+news_p = p_text.text.strip()
+
 print(news_title)
+print(news_p)
 
 
 
