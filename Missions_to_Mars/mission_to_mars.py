@@ -8,13 +8,14 @@ options = Options()
 options.headless = True
 driver = webdriver.Chrome("/usr/local/bin/chromedriver", options=options)
 
+# NASA Mars News
+
 # establish url and scrape web page
 url = "https://mars.nasa.gov/news/"
 
 driver.get(url)
-driver.implicitly_wait(3)
+driver.implicitly_wait(4)
 html = driver.page_source
-driver.close()
 
 # pass to bs4 for parsing
 soup = BeautifulSoup(html, "html.parser")
@@ -34,4 +35,17 @@ print(news_title)
 print(news_p)
 
 
+# JPL Mars Space Images - Featured Image
 
+# establish url and scrape web page
+base_url = "https://www.jpl.nasa.gov/spaceimages/"
+url = base_url + "?search=&category=Mars"
+
+driver.get(url)
+driver.implicitly_wait(4)
+html = driver.page_source
+driver.close()
+
+soup = BeautifulSoup(html, "html.parser")
+
+print(soup.head.prettify())
