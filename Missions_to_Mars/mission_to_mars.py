@@ -2,6 +2,8 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 #set up driver
 options = Options()
@@ -42,10 +44,24 @@ base_url = "https://www.jpl.nasa.gov/spaceimages/"
 url = base_url + "?search=&category=Mars"
 
 driver.get(url)
-driver.implicitly_wait(4)
-html = driver.page_source
-driver.close()
 
-soup = BeautifulSoup(html, "html.parser")
+link = driver.find_element_by_link_text("FULL IMAGE")
+link.click()
 
-print(soup.head.prettify())
+try:
+    element = WebDriverWait(driver, 5).until(
+        EC.presence_of_element_located((By.LINK_TEXT, "more info"))
+    )
+    element.click()
+except:
+    driver.quit()
+
+# driver.implicitly_wait(4)
+# html = driver.page_source
+# driver.close()
+
+# soup = BeautifulSoup(html, "html.parser")
+
+# print(soup.head.prettify())
+
+
