@@ -113,3 +113,7 @@ driver.implicitly_wait(10)
 html = driver.page_source
 
 soup = BeautifulSoup(html, "html.parser")
+
+items = soup.find_all("div", class_="item")
+
+print(items)
