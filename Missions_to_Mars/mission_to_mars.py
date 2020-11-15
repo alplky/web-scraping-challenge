@@ -126,4 +126,12 @@ for title in titles:
     driver.implicitly_wait(10)
     html_pages.append(driver.page_source)
 
-print(html_pages)
+# convert list into a string for bs4
+html = " ".join(map(str, html_pages))
+
+# pass to bs4 for parsing
+soup = BeautifulSoup(html, "html.parser")
+
+img_urls = soup.find_all("img", class_="wide-image")
+
+print(img_urls)
