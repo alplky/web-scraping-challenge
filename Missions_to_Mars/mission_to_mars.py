@@ -117,4 +117,13 @@ soup = BeautifulSoup(html, "html.parser")
 # remove all h3 tags from list
 titles = [h3.text.strip() for h3 in soup.find_all("h3")]
 
-print(titles)
+# loop through list of titles to navigate to each page and extract html from each
+html_pages = []
+for title in titles:
+    driver.get(url)
+    driver.implicitly_wait(10)
+    driver.find_element_by_link_text(title).click()
+    driver.implicitly_wait(10)
+    html_pages.append(driver.page_source)
+
+print(html_pages)
