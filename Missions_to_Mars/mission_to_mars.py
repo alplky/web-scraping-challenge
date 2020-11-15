@@ -86,4 +86,6 @@ soup = BeautifulSoup(html, "html.parser")
 
 tables = soup.find_all("table")
 
-print(tables)
+facts_table = tables[0]
+
+print(facts_table)
