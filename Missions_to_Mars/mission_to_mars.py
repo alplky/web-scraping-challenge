@@ -101,3 +101,5 @@ mars_table = df.to_html(index=False)
 print("Mars Facts Table")
 print("-" * 30)
 print(df)
+
+# Mars Hemispheres
