@@ -95,4 +95,9 @@ table_data = [[cell.text for cell in row.find_all(["th", "td"])] for row in fact
 # convert to dataframe
 df = pd.DataFrame(table_data)
 
+#save html of table to a string
+mars_table = df.to_html(index=False)
+
+print("Mars Facts Table")
+print("-" * 30)
 print(df)
