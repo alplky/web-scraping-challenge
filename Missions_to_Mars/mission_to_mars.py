@@ -86,6 +86,13 @@ soup = BeautifulSoup(html, "html.parser")
 
 tables = soup.find_all("table")
 
+# index for info only on the mars facts table
 facts_table = tables[0]
 
-print(facts_table)
+# extract data from the facts table
+table_data = [[cell.text for cell in row.find_all(["th", "td"])] for row in facts_table.find_all("tr")]
+
+# convert to dataframe
+df = pd.DataFrame(table_data)
+
+print(df)
