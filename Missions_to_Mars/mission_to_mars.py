@@ -103,3 +103,13 @@ print("-" * 30)
 print(df)
 
 # Mars Hemispheres
+
+# establish url and scrape web page
+base_url = "https://astrogeology.usgs.gov"
+url = base_url + "/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+
+driver.get(url)
+driver.implicitly_wait(10)
+html = driver.page_source
+
+soup = BeautifulSoup(html, "html.parser")
