@@ -12,6 +12,7 @@ flask = "*"
 flask-pymongo = "*"
 dnspython = "*"
 selenium = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.8"
