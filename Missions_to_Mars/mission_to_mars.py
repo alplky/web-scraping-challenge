@@ -114,10 +114,7 @@ html = driver.page_source
 
 soup = BeautifulSoup(html, "html.parser")
 
-titles = soup.find_all("h3")
-
-# titles = []
-# for item in items:
-#     titles.append(item["h3"])
+# remove all h3 tags from list
+titles = [h3.text.strip() for h3 in soup.find_all("h3")]
 
 print(titles)
