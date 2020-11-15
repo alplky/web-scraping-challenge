@@ -16,7 +16,7 @@ driver = webdriver.Chrome("/usr/local/bin/chromedriver", options=options)
 url = "https://mars.nasa.gov/news/"
 
 driver.get(url)
-driver.implicitly_wait(4)
+driver.implicitly_wait(10)
 html = driver.page_source
 
 # pass to bs4 for parsing
@@ -40,28 +40,14 @@ print(news_p)
 # JPL Mars Space Images - Featured Image
 
 # establish url and scrape web page
-base_url = "https://www.jpl.nasa.gov/spaceimages/"
-url = base_url + "?search=&category=Mars"
+base_url = "https://www.jpl.nasa.gov"
+url = base_url + "/spaceimages/?search=&category=Mars"
 
 driver.get(url)
+driver.implicitly_wait(10)
 
-link = driver.find_element_by_link_text("FULL IMAGE")
-link.click()
-
-try:
-    element = WebDriverWait(driver, 5).until(
-        EC.presence_of_element_located((By.LINK_TEXT, "more info"))
-    )
-    element.click()
-except:
-    driver.quit()
-
-# driver.implicitly_wait(4)
-# html = driver.page_source
-# driver.close()
-
-# soup = BeautifulSoup(html, "html.parser")
-
-# print(soup.head.prettify())
+# navigate web page to find large image url
+driver.find_element_by_link_text("FULL IMAGE").click()
+driver.find_element_by_partial_link_text("more info").click()
 
 
