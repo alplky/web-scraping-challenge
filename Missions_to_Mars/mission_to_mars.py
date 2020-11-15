@@ -2,6 +2,7 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+import pandas as pd 
 
 #set up driver
 options = Options()
@@ -70,3 +71,19 @@ featured_image_url = base_url + src
 print("Featured Mars Image URL")
 print("-" * 30)
 print(featured_image_url)
+
+# Mars Facts
+
+# establish url and scrape web page
+url = "https://space-facts.com/mars/"
+
+driver.get(url)
+driver.implicitly_wait(10)
+html = driver.page_source
+
+# pass to bs4 for parsing
+soup = BeautifulSoup(html, "html.parser")
+
+tables = soup.find_all("table")
+
+print(tables)
