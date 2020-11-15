@@ -2,8 +2,6 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 #set up driver
 options = Options()
@@ -50,4 +48,11 @@ driver.implicitly_wait(10)
 driver.find_element_by_link_text("FULL IMAGE").click()
 driver.find_element_by_partial_link_text("more info").click()
 
+driver.implicitly_wait(10)
+html = driver.page_source
+
+# pass to bs4 for parsing
+soup = BeautifulSoup(html, "html.parser")
+
+main_img = soup.find_all("img", class_="main_image")
 
