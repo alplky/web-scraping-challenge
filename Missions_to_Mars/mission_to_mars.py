@@ -114,11 +114,10 @@ html = driver.page_source
 
 soup = BeautifulSoup(html, "html.parser")
 
-items = soup.find_all("h3", class_="itemLink product-item")
+titles = soup.find_all("h3")
 
-titles = []
-for item in items:
-    titles.append(item["h3"])
-
+# titles = []
+# for item in items:
+#     titles.append(item["h3"])
 
 print(titles)
