@@ -146,6 +146,5 @@ def scrape(driver):
 
 scrape(driver)
 driver.close()
-print(mars_data)
 
     
