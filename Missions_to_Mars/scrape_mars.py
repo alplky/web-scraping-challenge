@@ -5,15 +5,19 @@ from selenium.webdriver.chrome.options import Options
 import pandas as pd 
 
 #set up driver
-options = Options()
-options.headless = True
-driver = webdriver.Chrome("/usr/local/bin/chromedriver", options=options)
+def configure_chrome_driver():
 
+    options = Options()
+    options.headless = True
+    driver = webdriver.Chrome("/usr/local/bin/chromedriver", options=options)
 
-mars_data = {}
+    return driver
 
-def scrape():
-    # establish url and scrape web page
+def scrape(driver):
+    # empty dict for adding values
+    mars_data = {}
+
+    # establish url and scrape web page for Mars News
     url = "https://mars.nasa.gov/news/"
 
     driver.get(url)
@@ -34,7 +38,7 @@ def scrape():
     p_text = news_titles[0].find("div", class_="article_teaser_body")
     news_p = p_text.text.strip()
 
-    # establish url and go seach Mars images
+    # establish url and seach Mars featured image
     base_url = "https://www.jpl.nasa.gov"
     url = base_url + "/spaceimages/?search=&category=Mars"
 
@@ -63,7 +67,7 @@ def scrape():
     # combine base url with src string and assign to variable
     featured_image_url = base_url + src
 
-    # establish url and scrape web page
+    # establish url and scrape web page for facts table
     url = "https://space-facts.com/mars/"
 
     driver.get(url)
@@ -87,7 +91,7 @@ def scrape():
     #save html of table to a string
     mars_table = df.to_html(index=False)
 
-    # establish url and scrape web page
+    # establish url and scrape web page for Mars hemispheres
     base_url = "https://astrogeology.usgs.gov"
     url = base_url + "/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
 
@@ -108,8 +112,6 @@ def scrape():
         driver.find_element_by_link_text(title).click()
         driver.implicitly_wait(10)
         html_pages.append(driver.page_source)
-
-    driver.close()
 
     # convert list into a string for bs4
     html = " ".join(map(str, html_pages))
@@ -136,14 +138,18 @@ def scrape():
     # zip the list of keys and values together for each tuple in the list
     hemisphere_img_urls = [dict(zip(keys, values)) for values in tuple_list]
 
-    mars_data["mars_news_title"].append(news_title)
-    mars_data["mars_news_p"].append(news_p)
-    mars_data["featured_image"].append(featured_image_url)
-    mars_data["mars_facts_table"].append(mars_table)
-    mars_data["mars_hemispheres"].append(hemisphere_img_urls)
-
+    mars_data = {
+        "mars_news_title": news_title,
+        "mars_news_p": news_p,
+        "featured_image": featured_image_url,
+        "mars_facts_table": mars_table,
+        "mars_hemispheres": hemisphere_img_urls
+    }
+    
     return mars_data    
 
-print(mars_data)
+driver = configure_chrome_driver()
+scrape(driver)
+driver.close()
 
     
