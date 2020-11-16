@@ -142,7 +142,7 @@ for img in img_urls:
 # add base url to img_srcs
 urls = [(base_url + e) for e in img_srcs]
 
-# zip lists together for converting to list of dicts
-zipped = [e for i in zip(titles, urls) for e in i]
+# zip lists together in tuples for converting to list of dicts
+tuple_list = list(zip(titles, urls))
 
-print(zipped)
+print(tuple_list)
