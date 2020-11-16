@@ -9,7 +9,7 @@ options = Options()
 options.headless = True
 driver = webdriver.Chrome("/usr/local/bin/chromedriver", options=options)
 
-# NASA Mars News
+# NASA Mars News ----------------------------------------------
 
 # establish url and scrape web page
 url = "https://mars.nasa.gov/news/"
@@ -37,7 +37,7 @@ print("-" * 30)
 print(news_title)
 print(news_p)
 
-# JPL Mars Space Images - Featured Image
+# JPL Mars Space Images - Featured Image -----------------------------
 
 # establish url and go seach Mars images
 base_url = "https://www.jpl.nasa.gov"
@@ -72,7 +72,7 @@ print("Featured Mars Image URL")
 print("-" * 30)
 print(featured_image_url)
 
-# Mars Facts
+# Mars Facts ----------------------------------------------
 
 # establish url and scrape web page
 url = "https://space-facts.com/mars/"
@@ -102,7 +102,7 @@ print("Mars Facts Table")
 print("-" * 30)
 print(df)
 
-# Mars Hemispheres
+# Mars Hemispheres ----------------------------------------------
 
 # establish url and scrape web page
 base_url = "https://astrogeology.usgs.gov"
@@ -142,4 +142,7 @@ for img in img_urls:
 # add base url to img_srcs
 urls = [(base_url + e) for e in img_srcs]
 
-print(urls)
+# zip lists together for converting to list of dicts
+zipped = [e for i in zip(titles, urls) for e in i]
+
+print(zipped)
