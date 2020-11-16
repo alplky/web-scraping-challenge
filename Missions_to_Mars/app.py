@@ -2,7 +2,7 @@
 from scrape_mars import scrape
 from scrape_mars import configure_chrome_driver
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import pymongo
 
 driver = configure_chrome_driver()
@@ -16,18 +16,15 @@ app = Flask(__name__)
 
 @app.route("/")
 def main():
-    return "The app is up!"
 
-
-#     for result in db.mars.find():
-#         results.append({key: value for key, value in result.items()})
-#     return render_template("index.html", mars_dict=results)
+    mars_data = db.mars.find_one()
+    return render_template("index.html", mars_data=mars_data)
 
 @app.route("/scrape")
 def scrape_route():
     db.mars.drop()
     db.mars.insert_one(scrape(driver))
-    return "Successfully scraped webpages!"
+    return redirect("/", code=303)
 
 
 if __name__ == "__main__":
