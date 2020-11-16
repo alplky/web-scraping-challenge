@@ -1,8 +1,11 @@
 # set up and dependencies
 from scrape_mars import scrape
+from scrape_mars import configure_chrome_driver
 import os
 from flask import Flask, render_template
 import pymongo
+
+driver = configure_chrome_driver()
 
 # set up connections to Mongo Database
 CONN = os.getenv("CONN")
@@ -24,7 +27,7 @@ def main():
 
 @app.route("/scrape")
 def scrape_route():
-    db.mars.insert_many(scrape())
+    db.mars.insert_one(scrape(driver))
     return "Successfully scraped webpages!"
 
 
