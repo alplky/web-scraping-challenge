@@ -12,8 +12,6 @@ CONN = os.getenv("CONN")
 client = pymongo.MongoClient(CONN)
 db = client.mars
 
-db.mars.drop()
-
 app = Flask(__name__)
 
 @app.route("/")
@@ -27,6 +25,7 @@ def main():
 
 @app.route("/scrape")
 def scrape_route():
+    db.mars.drop()
     db.mars.insert_one(scrape(driver))
     return "Successfully scraped webpages!"
 
