@@ -13,6 +13,7 @@ flask-pymongo = "*"
 dnspython = "*"
 selenium = "*"
 pandas = "*"
+pymongo = "*"
 
 [requires]
 python_version = "3.8"
