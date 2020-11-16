@@ -25,7 +25,7 @@ def scrape(driver):
     url = "https://mars.nasa.gov/news/"
 
     driver.get(url)
-    driver.implicitly_wait(10)
+    driver.implicitly_wait(20)
     html = driver.page_source
 
     # pass to bs4 for parsing
