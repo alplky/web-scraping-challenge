@@ -4,8 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mission to Mars</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
+    <div>
+        <h1>Mission to Mars</h1>
+        <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a>
+    </div>
+    
     <h3>{{ mars_data.news_title }}</h3>
     <p>{{ mars_data.mars_news_p }}</p>
     <a href={{ mars_data.featured_image }}>
