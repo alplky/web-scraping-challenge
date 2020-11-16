@@ -145,4 +145,12 @@ urls = [(base_url + e) for e in img_srcs]
 # zip lists together in tuples for converting to list of dicts
 tuple_list = list(zip(titles, urls))
 
-print(tuple_list)
+# keys for list of dictionaries for each hemisphere
+keys = ("title", "img_url")
+
+# zip the list of keys and values together for each tuple in the list
+hemisphere_img_urls = [dict(zip(keys, values)) for values in tuple_list]
+
+print("Mars Hemispheres")
+print("-" * 30)
+print(hemisphere_img_urls)
