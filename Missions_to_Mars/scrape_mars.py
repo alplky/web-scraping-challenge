@@ -34,11 +34,11 @@ def scrape(driver):
     # extract news titles
     news_titles = soup.find_all("li", class_="slide")
 
-    # extract latest news title and assign to variable
+    # extract latest news title and add to dict
     latest = news_titles[0].find("div", class_="content_title")
     mars_data["news_title"] = latest.text.strip()
 
-    # extract latest news paragraph text and assign to variable
+    # extract latest news paragraph text and add to dict
     p_text = news_titles[0].find("div", class_="article_teaser_body")
     mars_data["mars_news_p"] = p_text.text.strip()
 
@@ -68,7 +68,7 @@ def scrape(driver):
     for image in main_img:
         src = image["src"]
 
-    # combine base url with src string and assign to variable
+    # combine base url with src string and add to dict
     mars_data["featured_image"] = base_url + src
 
     # establish url and scrape web page for facts table
@@ -92,7 +92,7 @@ def scrape(driver):
     # convert to dataframe
     df = pd.DataFrame(table_data)
 
-    #save html of table to a string
+    #save html of table to a string and add to dict
     mars_data["mars_facts_table"] = df.to_html(index=False)
 
     # establish url and scrape web page for Mars hemispheres
@@ -139,7 +139,7 @@ def scrape(driver):
     # keys for list of dictionaries for each hemisphere
     keys = ("title", "img_url")
 
-    # zip the list of keys and values together for each tuple in the list
+    # zip the list of keys and values together for each tuple in the list and add to dict
     mars_data["mars_hemispheres"] = [dict(zip(keys, values)) for values in tuple_list]
 
     return mars_data    
