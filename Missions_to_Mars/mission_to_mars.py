@@ -134,4 +134,12 @@ soup = BeautifulSoup(html, "html.parser")
 
 img_urls = soup.find_all("img", class_="wide-image")
 
-print(img_urls)
+# extract all src attributes
+img_srcs = []
+for img in img_urls:
+    img_srcs.append(img["src"])
+
+# add base url to img_srcs
+urls = [(base_url + e) for e in img_srcs]
+
+print(urls)
