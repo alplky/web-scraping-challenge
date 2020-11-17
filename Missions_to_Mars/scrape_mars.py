@@ -92,6 +92,9 @@ def scrape(driver):
     # convert to dataframe
     df = pd.DataFrame(table_data)
 
+    # rename columns
+    df.rename(columns = {0 : "", 1: ""}, inplace=True)
+    
     #save html of table to a string and add to dict
     mars_data["mars_facts_table"] = df.to_html(index=False)
 
