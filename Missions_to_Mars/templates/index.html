@@ -9,15 +9,38 @@
 </head>
 
 <body>
-    <div class="text-center box">
-        <h1 class=h1>Mission to Mars</h1>
-        <a href="/scrape" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Scrape New Data</a>
+    <div class="container text-center box">
+        <div class=row>
+            <div class="col-lg-12 col-sm-12">
+                <h1 class=h1>Mission to Mars</h1>
+                <a href="/scrape" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Scrape New Data</a>
+            </div>
+        </div>
     </div>
+    <div class="container">
+        <div class=row>
+            <div class="col-lg-12 col-sm-12">
+                <h4>Latest Mars News</h4>
+                <h5>{{ mars_data.news_title }}</h5>
+                <p>{{ mars_data.mars_news_p }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class=row>
+            <div class="col-lg-8 col-sm-8">
+                <h4>Featured Mars Image</h4>
+                <a href={{ mars_data.featured_image }}>
+                    <img alt="Mars Featured Image" src={{ mars_data.featured_image }}>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-4">
+                <h5>Mars Facts</h5>
+                {{ mars_data.mars_facts_table }}
+            </div>
+        </div>
+    </div>
+
     
-    <h3>{{ mars_data.news_title }}</h3>
-    <p>{{ mars_data.mars_news_p }}</p>
-    <a href={{ mars_data.featured_image }}>
-        <img alt="Mars Featured Image" src={{ mars_data.featured_image }}>
-    </a>
 </body>
 </html>
