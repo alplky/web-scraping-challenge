@@ -57,12 +57,7 @@
             </div>
             <div class="col-lg-4 col-sm-4">
                 <h5>Mars Facts</h5>
-                {% for row in mars_data.mars_facts_table %}
-                    <tr>
-                        <td>{{ row[0] }}</td>
-                        <td>{{ row[1] }}</td>
-                    </tr>
-                {% endfor %}    
+                {{ mars.data.mars_facts.table }}    
             </div>
         </div>
     </div>
