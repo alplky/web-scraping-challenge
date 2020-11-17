@@ -2,7 +2,7 @@
 from scrape_mars import scrape
 from scrape_mars import configure_chrome_driver
 import os
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, redirect
 import pymongo
 
 driver = configure_chrome_driver()
