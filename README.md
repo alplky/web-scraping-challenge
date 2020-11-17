@@ -25,6 +25,9 @@ Build a web application that scrapes various websites for data related to the Mi
     - Create a root route that will query the Mongo database and pass the data into an HTML template to display the data.
     - Create an HTML file that will take the mars data dictioary and display all data on the page. 
 
+![Main_Img](Images/main_img.png) 
+![Hemispheres](Images/hemispheres.png)
+
 ### Web Scraping
 
 #### Nasa Mars News
