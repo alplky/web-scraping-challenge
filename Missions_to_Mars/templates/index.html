@@ -5,7 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mission to Mars</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        .h1 {
+            color: rgb(8, 58, 58); 
+            text-align: center;
+            padding-top: 80px;
+            font-size: 60px;
+        }
+
+        .box {
+            height: 250px;
+            width: 100%;
+            margin-bottom: 15px;
+            background-color: rgb(192, 124, 35);
+        }
+
+        #featured-img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+
+    </style>
 </head>
 
 <body>
@@ -31,12 +52,17 @@
             <div class="col-lg-8 col-sm-8">
                 <h4>Featured Mars Image</h4>
                 <a href={{ mars_data.featured_image }}>
-                    <img alt="Mars Featured Image" src={{ mars_data.featured_image }}>
+                    <img alt="Mars Featured Image" src={{ mars_data.featured_image }} id="featured-img">
                 </a>
             </div>
             <div class="col-lg-4 col-sm-4">
                 <h5>Mars Facts</h5>
-                {{ mars_data.mars_facts_table }}
+                {% for row in mars_data.mars_facts_table %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                    </tr>
+                {% endfor %}    
             </div>
         </div>
     </div>
