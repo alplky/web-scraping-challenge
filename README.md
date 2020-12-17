@@ -1,5 +1,7 @@
 # web-scraping-challenge
 
+* NOTE: All scraping details are inside the mission_to_mars.py Python file instead of a Jupyter Notebook per directions from instructor. 
+
 ## Background
 Build a web application that scrapes various websites for data related to the Mission to Mars and display the information in a single HTML page.
 
