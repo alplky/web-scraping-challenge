@@ -8,7 +8,7 @@ Build a web application that scrapes various websites for data related to the Mi
 ## Technologies Used
 - Python
 - Selenium
-- Beautifiul Soup
+- Beautiful Soup
 - Pandas
 - Flask
 - Jinja
@@ -20,12 +20,12 @@ Build a web application that scrapes various websites for data related to the Mi
     - NASA Mars News
     - JPL Mars Space Images - Featured Image
     - Mars Facts
-    - Mars Hamispheres
+    - Mars Hemispheres
 2. MongoDB and Flask Application
-    - Convert scraping file into a script with a scrape function that will execulte all scraping code and return a Python dictionary containing all retrieved data. 
+    - Convert scraping file into a script with a scrape function that will execute all scraping code and return a Python dictionary containing all retrieved data. 
     - Create a scrape route that will import the scrape function and store the returned value in MongoDB as a Python dictionary.
     - Create a root route that will query the Mongo database and pass the data into an HTML template to display the data.
-    - Create an HTML file that will take the mars data dictioary and display all data on the page. 
+    - Create an HTML file that will take the mars data dictionary and display all data on the page. 
 
 ![Main_Img](Images/main_img.png) 
 ![Hemispheres](Images/hemispheres.png)
